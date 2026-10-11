@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colour tokens as "R G B" so Tailwind opacity modifiers (bg-card/95, border-ink/20) keep working. */
+@layer base {
+  :root {
+    --canvas: 255 255 255;
+    --page: 247 247 247;
+    --card: 255 255 255;
+    --surface: 247 247 247;
+    --line: 230 230 230;
+    --ink: 34 34 34;
+    --muted: 107 107 107;
+    --track: 239 239 239;
+    --brand-50: 238 247 242;
+    --brand-100: 214 235 224;
+    --brand-fg: 23 97 74;
+    --brand-accent: 31 122 90;
+  }
+  .dark {
+    --canvas: 15 18 17;
+    --page: 15 18 17;
+    --card: 22 27 25;
+    --surface: 33 40 37;
+    --line: 48 57 53;
+    --ink: 236 241 238;
+    --muted: 156 168 162;
+    --track: 44 52 48;
+    --brand-50: 22 48 38;
+    --brand-100: 30 66 52;
+    --brand-fg: 111 207 163;
+    --brand-accent: 76 191 142;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+  html.dark { color-scheme: dark; } /* native date pickers, selects and scrollbars follow the theme */
+  body { @apply bg-canvas text-ink antialiased; }
+  :focus-visible { @apply outline-none ring-2 ring-brand-accent ring-offset-2 ring-offset-canvas; }
+  input::placeholder { @apply text-muted/70; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,12 @@
+from datetime import datetime, timezone
+
+from sqlalchemy.orm import DeclarativeBase
+
+
+class Base(DeclarativeBase):
+    pass
+
+
+def utcnow() -> datetime:
+    """Naive UTC timestamp. All DateTime columns store UTC without tzinfo."""
+    return datetime.now(timezone.utc).replace(tzinfo=None)
